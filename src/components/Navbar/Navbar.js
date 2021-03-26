@@ -5,7 +5,7 @@ import NavbarElement from "./NavbarElement/NavbarElement";
 const Navbar = () => {
   return (
     <header>
-      <img src={Logo} />
+      <img className={styles.Img} src={Logo} />
       <nav>
         <ul>
           <NavbarElement>Recipes</NavbarElement>

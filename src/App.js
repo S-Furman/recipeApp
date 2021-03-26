@@ -1,9 +1,10 @@
 import "./App.css";
 import Layout from "./components/Layout/Layout";
+import Recipes from "./components/Recipes/Recipes";
 function App() {
   return (
     <Layout>
-      <div>siema</div>
+      <Recipes></Recipes>
     </Layout>
   );
 }
