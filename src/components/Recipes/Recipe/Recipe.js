@@ -7,7 +7,7 @@ const Recipe = (props) => {
   return (
     <div className={styles.Recipe}>
       <p className={styles.DishName}>{props.name}</p>
-      <img className={styles.Img} src={Food} />
+      <img className={styles.Img} src={Food} alt="dish" />
 
       <p className={styles.Description}>{props.description}</p>
       <StarRating numberOfStars={props.difficulty} />

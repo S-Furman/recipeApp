@@ -32,9 +32,10 @@ const Recipes = () => {
   console.log(Recipes);
   return (
     <div className={styles.Recipes}>
-      {Recipes.map((recipe) => {
+      {Recipes.map((recipe, index) => {
         return (
           <Recipe
+            key={index}
             name={recipe.dishName}
             difficulty={recipe.difficulty}
             description={recipe.description}
