@@ -8,8 +8,8 @@ const Navbar = () => {
       <img className={styles.Img} src={Logo} />
       <nav>
         <ul>
-          <NavbarElement>Recipes</NavbarElement>
-          <NavbarElement>Add New</NavbarElement>
+          <NavbarElement path="/">Recipes</NavbarElement>
+          <NavbarElement path="/AddRecipe">Add New</NavbarElement>
         </ul>
       </nav>
     </header>
