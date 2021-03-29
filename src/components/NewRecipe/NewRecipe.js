@@ -1,39 +1,43 @@
 import React, { useState } from "react";
 import Ingredient from "./Ingredient/Ingredient";
+import styles from "./NewRecipe.module.css";
+import { connect } from "react-redux";
 const NewRecipe = (props) => {
   const [recipe, setRecipe] = useState({
     title: "",
     shortDescription: "",
     difficulty: 0,
-    ingredients: [],
-    numOfIngredients: 1,
   });
-
-  const addIngredient = () => {
-    setRecipe({
-      ...recipe,
-      numOfIngredients: recipe.numOfIngredients + 1,
-    });
-  };
-
-  const ingredients = [];
-
-  for (let i = 0; i < recipe.numOfIngredients; i += 1) {
-    ingredients.push(<Ingredient key={i} id={i} />);
-  }
 
   return (
     <div>
-      <form>
+      <form className={styles.Form}>
         <label>Title:</label>
         <input type="text" name="title" />
         <label>Short description:</label>
         <input type="text" name="description" />
-        {ingredients}
+        {props.ingredients.map((p) => {
+          return <Ingredient key={p.count} id={p.count} />;
+        })}
       </form>
-      <button onClick={addIngredient}>+</button>
+      <button onClick={() => props.addIngredient()}>+</button>
     </div>
   );
 };
 
-export default NewRecipe;
+const mapStateToProps = (state) => {
+  return {
+    ingredients: state.ingredients,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addIngredient: () =>
+      dispatch({
+        type: "addIngredient",
+      }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewRecipe);
