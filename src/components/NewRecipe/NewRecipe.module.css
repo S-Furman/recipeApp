@@ -1,0 +1,26 @@
+.form {
+  width: 40%;
+  padding: 20px;
+  height: 400px;
+  border: 1px solid black;
+  margin: 100px auto;
+  border-radius: 10px;
+  border: 2px solid #5da2d5;
+  background: #90ccf4;
+}
+
+.title h1 {
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.input {
+  width: 100%;
+  background-color: #ececec;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 12px;
+  font-family: "Nunito";
+}
