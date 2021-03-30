@@ -1,12 +1,7 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .Img {
   max-width: 10%;
   min-width: 60px;
+  background-color: #f78888;
 }
 
 header {

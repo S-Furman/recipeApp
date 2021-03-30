@@ -1,31 +1,40 @@
-.Recipe {
+.recipe {
   display: inline-block;
   max-width: 23%;
   margin: 10px;
+  height: auto;
   position: relative;
 }
 
-.Img {
+.img {
   width: 100%;
   border-radius: 5%;
   transition: opacity, border-radius 0.5s;
   z-index: -1;
 }
-
-.DishName {
-  padding: 5px;
-  font-size: 1.5vw;
-}
-
-.Img:hover {
+.img:hover {
   opacity: 0.3;
   border-radius: 25%;
 }
 
-.Description {
+.insideOfImg {
+  width: 100%;
   position: absolute;
-  bottom: 40%;
-  left: 3%;
-  font-size: 1.75vw;
+  top: 80px;
+  height: 40%;
   z-index: -1;
+}
+
+.DishName {
+  padding: 5px;
+}
+
+.description {
+  position: absolute;
+  height: 30%;
+  top: 50%;
+  width: 100%;
+  left: 10%;
+  font-size: 100%;
+  text-align: left;
 }

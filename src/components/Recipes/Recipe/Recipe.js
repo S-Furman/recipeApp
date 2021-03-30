@@ -5,12 +5,13 @@ import StarRating from "../StarRating/StarRating";
 const Recipe = (props) => {
   console.log(props.difficulty);
   return (
-    <div className={styles.Recipe}>
+    <div className={styles.recipe}>
       <p className={styles.DishName}>{props.name}</p>
-      <img className={styles.Img} src={Food} alt="dish" />
-
-      <p className={styles.Description}>{props.description}</p>
-      <StarRating numberOfStars={props.difficulty} />
+      <img className={styles.img} src={Food} alt="dish" />
+      <div className={styles.insideOfImg}>
+        <StarRating numberOfStars={props.difficulty} />
+        <p className={styles.description}>{props.description}</p>
+      </div>
     </div>
   );
 };

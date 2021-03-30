@@ -1,8 +1,20 @@
-.Img {
-  color: black;
-  width: 10%;
+.star {
+  max-width: 70%;
+}
+
+.firstStar,
+.secondStar,
+.thirdStar {
   position: absolute;
-  left: 10%;
-  top: 25%;
-  z-index: -1;
+  width: 30%;
+  top: 0%;
+}
+
+.secondStar {
+  width: 100%;
+  left: 100%;
+}
+.thirdStar {
+  width: 100%;
+  left: 100%;
 }

@@ -15,7 +15,7 @@ const Recipes = () => {
     },
     {
       dishName: "pomidorowa",
-      difficulty: 2,
+      difficulty: 3,
       description: "mojadruga ulbuiona zupa",
     },
     {
