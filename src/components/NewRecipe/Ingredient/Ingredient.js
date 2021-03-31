@@ -16,7 +16,7 @@ const Ingredient = (props) => {
         }
       />
       <Button
-        styling={styles.ingredientButton}
+        btnType="deleteButton"
         click={() => props.deleteIngredient(props.id)}
       >
         -

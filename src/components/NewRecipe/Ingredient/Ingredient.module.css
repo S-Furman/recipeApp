@@ -4,11 +4,10 @@
 
 .input {
   box-sizing: border-box;
-  display: inline-block;
   width: 80%;
   background-color: #ececec;
   border-radius: 5px;
-  font-size: 25px;
+  padding: 12px;
   margin-bottom: 12px;
   font-family: "Nunito";
 }

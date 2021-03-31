@@ -4,8 +4,7 @@ Simple SPA which allows to store your favourite recipes.
 
 ## Technology
 
--HTML
-
+- HTML
 - CSS
 - JavaScript
 - React

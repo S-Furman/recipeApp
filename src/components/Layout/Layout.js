@@ -1,11 +1,18 @@
-import React from "react";
-import Navbar from "../Navbar/Navbar";
+import React, { useState } from "react";
+import Navbar from "./Navbar/Navbar";
+import SideDrawer from "./SideDrawer/SideDrawer";
 const Layout = (props) => {
+  const [sideDrawer, setSideDrawer] = useState(false);
+  const sideDrawerButtonHandler = () => {
+    setSideDrawer(!sideDrawer);
+  };
+
   return (
-    <div>
-      <Navbar />
+    <React.Fragment>
+      <Navbar sideDrawerButtonHandler={sideDrawerButtonHandler} />
+      <SideDrawer opened={sideDrawer} />
       <main>{props.children}</main>
-    </div>
+    </React.Fragment>
   );
 };
 

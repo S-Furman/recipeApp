@@ -1,7 +1,8 @@
 .recipe {
   display: inline-block;
-  max-width: 23%;
-  margin: 10px;
+  width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
   height: auto;
   position: relative;
 }
@@ -32,9 +33,21 @@
 .description {
   position: absolute;
   height: 30%;
-  top: 50%;
-  width: 100%;
+  top: 80%;
+  width: 80%;
   left: 10%;
   font-size: 100%;
   text-align: left;
+}
+
+@media (max-width: 800px) {
+  .recipe {
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .recipe {
+    width: 100%;
+  }
 }

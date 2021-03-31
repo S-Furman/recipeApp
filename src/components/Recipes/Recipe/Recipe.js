@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Recipe.module.css";
-import Food from "../../../assets/food.jpg";
+import Food from "../../../assets/dishPhoto.jpg";
 import StarRating from "../StarRating/StarRating";
 const Recipe = (props) => {
   console.log(props.difficulty);

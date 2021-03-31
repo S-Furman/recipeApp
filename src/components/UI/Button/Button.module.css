@@ -1,12 +1,11 @@
 .button {
   box-sizing: border-box;
-  width: 20%;
   display: inline-block;
   background-color: #ececec;
   color: #f3d250;
   cursor: pointer;
   border-color: #f3d250;
-  font-size: 30px;
+  padding: 12px;
   border-radius: 5px;
   transition: background-color 0.5s, color 0.5s;
 }
@@ -14,4 +13,10 @@
 .button:hover {
   background-color: #f3d250;
   color: white;
+}
+
+.deleteButton {
+  position: relative;
+  left: 5%;
+  width: 15%;
 }
