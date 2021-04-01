@@ -2,15 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import Button from "../../UI/Button/Button";
 import styles from "./Ingredient.module.css";
-import inputStyles from "../NewRecipe.module.css";
 const Ingredient = (props) => {
   return (
     <div className={styles.ingredient}>
       <input
         className={styles.input}
-        placeholder="ingriedent"
+        placeholder="Ingriedent"
         type="text"
-        name="igredient"
         onChange={(event) =>
           props.updateIngredient(event.target.value, props.id)
         }

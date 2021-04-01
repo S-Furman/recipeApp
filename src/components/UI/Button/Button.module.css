@@ -1,13 +1,13 @@
 .button {
   box-sizing: border-box;
   display: inline-block;
-  background-color: #ececec;
-  color: #f3d250;
+  background-color: #cebc81;
+  color: white;
   cursor: pointer;
-  border-color: #f3d250;
   padding: 12px;
   border-radius: 5px;
   transition: background-color 0.5s, color 0.5s;
+  border: none;
 }
 
 .button:hover {
@@ -19,4 +19,18 @@
   position: relative;
   left: 5%;
   width: 15%;
+  border-radius: 20px;
+}
+
+.newIngredientButton {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 50px;
+}
+
+.sendDataButton {
+  margin: auto;
+  display: block;
+  border-radius: 25px;
 }

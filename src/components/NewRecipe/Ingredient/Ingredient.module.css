@@ -1,13 +1,15 @@
-.ingredient {
-  width: 100%;
-}
-
 .input {
-  box-sizing: border-box;
   width: 80%;
   background-color: #ececec;
-  border-radius: 5px;
-  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  box-sizing: border-box;
+  padding: 15px;
   margin-bottom: 12px;
   font-family: "Nunito";
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid #255;
 }

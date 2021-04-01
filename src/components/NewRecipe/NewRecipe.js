@@ -51,17 +51,25 @@ const NewRecipe = (props) => {
         {props.ingredients.map((p) => {
           return <Ingredient key={p.count} id={p.count} />;
         })}
-        <input
+
+        <Button
+          btnType="newIngredientButton"
+          click={() => props.addIngredient()}
+        >
+          ADD NEW INGREDIENT
+        </Button>
+      </form>
+      {/* <input
           className={styles.input}
           type="file"
           onChange={(event) =>
             setRecipe({ ...recipe, image: event.target.value })
           }
-        />
+        /> */}
 
-        <Button click={() => props.addIngredient()}>ADD NEW INGREDIENT</Button>
-      </form>
-      <Button click={() => sendData()}>SEND DATA</Button>
+      <Button btnType="sendDataButton" click={() => sendData()}>
+        SEND DATA
+      </Button>
     </div>
   );
 };
