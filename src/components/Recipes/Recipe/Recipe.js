@@ -3,7 +3,6 @@ import styles from "./Recipe.module.css";
 import Food from "../../../assets/dishPhoto.jpg";
 import StarRating from "../StarRating/StarRating";
 const Recipe = (props) => {
-  console.log(props.difficulty);
   return (
     <div className={styles.recipe}>
       <p className={styles.DishName}>{props.name}</p>
