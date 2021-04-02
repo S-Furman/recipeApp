@@ -1,6 +1,7 @@
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/storage";
-import "/firebase/firestore";
+import "firebase/database";
+import "firebase/auth";
 
 var firebaseConfig = {
   apiKey: "AIzaSyCBiNHtOjC3YYN2ntLQXqqjYXY6NEnjakc",
@@ -16,6 +17,28 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const projectStorage = firebase.storage();
-const projectFirestore = firebase.firestore();
+const projectDatabase = firebase.database();
+const projectAuth = firebase.auth();
 
-export default (projectFirestore, projectStorage);
+export const signInWithGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  projectAuth
+    .signInWithPopup(provider)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const signInWithEmail = (email, password) => {
+  console.log("siema");
+  firebase.auth().signInWithEmailAndPassword(email, password);
+};
+
+export const signUp = (email, password) => {
+  firebase.auth().createUserWithEmailAndPassword(email, password);
+};
+
+export { projectDatabase, projectStorage, projectAuth };
