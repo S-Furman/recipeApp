@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
-import "firebase/storage";
 import "firebase/database";
 import "firebase/auth";
+import "firebase/storage";
 
 var firebaseConfig = {
   apiKey: "AIzaSyCBiNHtOjC3YYN2ntLQXqqjYXY6NEnjakc",
@@ -14,9 +14,8 @@ var firebaseConfig = {
   measurementId: "G-ET3RBY1K1S",
 };
 
-firebase.initializeApp(firebaseConfig);
+export const app = firebase.initializeApp(firebaseConfig);
 
-const projectStorage = firebase.storage();
 const projectDatabase = firebase.database();
 const projectAuth = firebase.auth();
 
@@ -40,5 +39,3 @@ export const signInWithEmail = (email, password) => {
 export const signUp = (email, password) => {
   firebase.auth().createUserWithEmailAndPassword(email, password);
 };
-
-export { projectDatabase, projectStorage, projectAuth };

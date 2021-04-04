@@ -4,24 +4,30 @@ import styles from "./NewRecipe.module.css";
 import { connect } from "react-redux";
 import Button from "../UI/Button/Button";
 import axios from "../../axios";
+import { app } from "../../firebase/config";
 const NewRecipe = (props) => {
   const [recipe, setRecipe] = useState({
     title: "",
     shortDescription: "",
     difficulty: 1,
-    image: null,
+    fileUrl: "",
   });
 
   const sendData = () => {
     const data = {
-      title: recipe.title,
-      shortDescription: recipe.shortDescription,
-      difficulty: recipe.difficulty,
-      ingredient: props.ingredients,
+      ...recipe,
     };
 
     axios.post("/newRecipe.json", data);
     console.log("postuje");
+  };
+
+  const uploadImg = async (event) => {
+    const file = event.target.files[0];
+    const storageRef = app.storage().ref();
+    const fileRef = storageRef.child(file.name);
+    await fileRef.put(file);
+    setRecipe({ ...recipe, fileUrl: await fileRef.getDownloadURL() });
   };
 
   return (
@@ -59,13 +65,7 @@ const NewRecipe = (props) => {
           ADD NEW INGREDIENT
         </Button>
       </form>
-      {/* <input
-          className={styles.input}
-          type="file"
-          onChange={(event) =>
-            setRecipe({ ...recipe, image: event.target.value })
-          }
-        /> */}
+      <input type="file" onChange={uploadImg} />
 
       <Button btnType="sendDataButton" click={() => sendData()}>
         SEND DATA
