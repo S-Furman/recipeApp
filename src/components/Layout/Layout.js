@@ -10,7 +10,7 @@ const Layout = (props) => {
   return (
     <React.Fragment>
       <Navbar sideDrawerButtonHandler={sideDrawerButtonHandler} />
-      <SideDrawer opened={sideDrawer} />
+      <SideDrawer click={sideDrawerButtonHandler} opened={sideDrawer} />
       <main>{props.children}</main>
     </React.Fragment>
   );

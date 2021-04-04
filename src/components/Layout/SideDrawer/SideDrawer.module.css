@@ -1,10 +1,10 @@
 .sideDrawer {
   position: fixed;
-  background-color: grey;
+  background-color: rgba(255, 255, 255, 0.9);
   width: 50%;
   right: 0;
   height: 100%;
-  z-index: 100;
+  z-index: 1000;
   transition: transform 0.5s;
 }
 
