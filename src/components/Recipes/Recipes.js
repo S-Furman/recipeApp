@@ -24,6 +24,7 @@ const Recipes = () => {
           name={recipe.title}
           difficulty={recipe.difficulty}
           description={recipe.shortDescription}
+          fileUrl={recipe.fileUrl}
         />
       );
     });

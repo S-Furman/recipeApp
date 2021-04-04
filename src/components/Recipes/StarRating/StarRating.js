@@ -7,7 +7,7 @@ const StarRating = (props) => {
       return (
         <div>
           <div className={styles.firstStar}>
-            <img className={styles.star} src={Star} alt="star" />;
+            <img className={styles.star} src={Star} alt="star" />
           </div>
         </div>
       );

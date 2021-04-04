@@ -6,16 +6,20 @@ import Button from "../UI/Button/Button";
 import axios from "../../axios";
 import { app } from "../../firebase/config";
 const NewRecipe = (props) => {
-  const [recipe, setRecipe] = useState({
+  const [newRecipe, setNewRecipe] = useState({
     title: "",
     shortDescription: "",
     difficulty: 1,
     fileUrl: "",
+    uploadable: false,
   });
 
   const sendData = () => {
     const data = {
-      ...recipe,
+      title: newRecipe.title,
+      shortDescription: newRecipe.shortDescription,
+      difficulty: newRecipe.difficulty,
+      fileUrl: newRecipe.fileUrl,
     };
 
     axios.post("/newRecipe.json", data);
@@ -26,10 +30,14 @@ const NewRecipe = (props) => {
     const file = event.target.files[0];
     const storageRef = app.storage().ref();
     const fileRef = storageRef.child(file.name);
-    await fileRef.put(file);
-    setRecipe({ ...recipe, fileUrl: await fileRef.getDownloadURL() });
-  };
 
+    await fileRef.put(file);
+    setNewRecipe({
+      ...newRecipe,
+      fileUrl: await fileRef.getDownloadURL(),
+      uploadable: true,
+    });
+  };
   return (
     <div className={styles.form}>
       <form>
@@ -38,7 +46,7 @@ const NewRecipe = (props) => {
         </div>
         <input
           onChange={(event) =>
-            setRecipe({ ...recipe, title: event.target.value })
+            setNewRecipe({ ...newRecipe, title: event.target.value })
           }
           placeholder="Title"
           className={styles.input}
@@ -46,7 +54,7 @@ const NewRecipe = (props) => {
         />
         <input
           onChange={(event) =>
-            setRecipe({ ...recipe, shortDescription: event.target.value })
+            setNewRecipe({ ...newRecipe, shortDescription: event.target.value })
           }
           placeholder="Description"
           className={styles.input}
@@ -67,7 +75,11 @@ const NewRecipe = (props) => {
       </form>
       <input type="file" onChange={uploadImg} />
 
-      <Button btnType="sendDataButton" click={() => sendData()}>
+      <Button
+        btnType="sendDataButton"
+        disabled={!newRecipe.uploadable}
+        click={() => sendData()}
+      >
         SEND DATA
       </Button>
     </div>

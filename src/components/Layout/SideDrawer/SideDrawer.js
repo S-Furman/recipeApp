@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./SideDrawer.module.css";
 import NavItems from "../Navbar/NavItems/NavItems";
 const SideDrawer = (props) => {
@@ -6,7 +6,6 @@ const SideDrawer = (props) => {
   if (props.opened) {
     style = "opened";
   }
-  console.log(style);
   return (
     <div className={[styles.sideDrawer, styles[style]].join(" ")}>
       <ul className={styles.ul}>

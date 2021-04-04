@@ -4,7 +4,6 @@ import Button from "../../UI/Button/Button";
 import inputStyles from "../../NewRecipe/NewRecipe.module.css";
 import { Link } from "react-router-dom";
 import { signInWithGoogle } from "../../../firebase/config";
-import GoogleButton from "react-google-button";
 const SignIn = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
