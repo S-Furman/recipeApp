@@ -16,7 +16,6 @@ var firebaseConfig = {
 
 export const app = firebase.initializeApp(firebaseConfig);
 
-const projectDatabase = firebase.database();
 const projectAuth = firebase.auth();
 
 export const signInWithGoogle = () => {

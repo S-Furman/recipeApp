@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Recipe.module.css";
-import Food from "../../../assets/dishPhoto.jpg";
 import StarRating from "../StarRating/StarRating";
 const Recipe = (props) => {
   return (
