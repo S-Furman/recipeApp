@@ -1,6 +1,5 @@
 # RECIPE APP
 
-Check out the app: https://recipeappbyme.web.app
 
 Simple SPA which allows to store your favourite recipes.
 
