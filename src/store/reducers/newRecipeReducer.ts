@@ -1,13 +1,22 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
+interface Ingredient {
+  count: number;
+  nameOfIngredient: string;
+}
+
+interface IngredientsArray {
+  ingredients: Ingredient[];
+}
+
 const initialState = {
   ingredients: [
     {
       count: 0,
-      nameOfIngredient: "sth",
+      nameOfIngredient: "",
     },
   ],
-};
+} as IngredientsArray;
 
 const newRecipeSlice = createSlice({
   name: "newRecipe",

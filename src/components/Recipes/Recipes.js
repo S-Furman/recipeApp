@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Recipe from "./Recipe/Recipe";
-import styles from "./Recipes.module.css";
+import { useState, useEffect } from "react";
 import axios from "../../axios";
+
+import Recipe from "./Recipe/Recipe";
+
 const Recipes = () => {
-  const [Recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     axios.get("/newRecipe.json").then((response) => {
@@ -15,9 +16,9 @@ const Recipes = () => {
     });
   }, []);
 
-  let view = <h1>siema</h1>;
-  if (Recipes) {
-    view = Recipes.map((recipe, index) => {
+  let articles = null;
+  if (recipes) {
+    articles = recipes.map((recipe, index) => {
       return (
         <Recipe
           key={index}
@@ -29,7 +30,7 @@ const Recipes = () => {
       );
     });
   }
-  return <div className={styles.Recipes}>{view}</div>;
+  return <>{articles}</>;
 };
 
 export default Recipes;

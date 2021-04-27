@@ -1,10 +1,13 @@
-import "./App.css";
+import { Switch, Route } from "react-router-dom";
+
 import Layout from "./components/Layout/Layout";
 import Recipes from "./components/Recipes/Recipes";
-import { Switch, Route } from "react-router-dom";
 import NewRecipe from "./components/NewRecipe/NewRecipe";
 import SignIn from "./components/Auth/SignIn/SignIn";
 import { signInWithEmail, signUp } from "./firebase/config";
+
+import "./App.css";
+
 function App() {
   return (
     <Layout>

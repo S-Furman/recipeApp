@@ -10,20 +10,20 @@ import styles from "./NewRecipe.module.css";
 import Ingredient from "./Ingredient/Ingredient";
 import Button from "../UI/Button/Button";
 
-const NewRecipe = (props) => {
+const NewRecipe = () => {
+  const history = useHistory();
+
   const ingredients = useSelector((state) => state.ingredients);
   const dispatch = useDispatch();
+
+  const titleRef = useRef();
+  const descriptionRef = useRef();
 
   const [newRecipe, setNewRecipe] = useState({
     difficulty: 1,
     fileUrl: "",
     uploadable: false,
   });
-
-  const history = useHistory();
-
-  const titleRef = useRef();
-  const descriptionRef = useRef();
 
   const sendData = () => {
     const data = {
@@ -50,7 +50,7 @@ const NewRecipe = (props) => {
       uploadable: true,
     });
   };
-  console.log(ingredients);
+
   return (
     <form className={styles.form}>
       <header className={styles.title}>ADD NEW RECIPE</header>
@@ -67,8 +67,8 @@ const NewRecipe = (props) => {
         type="text"
       />
 
-      {ingredients.map((p) => {
-        return <Ingredient key={p.count} id={p.count} />;
+      {ingredients.map((ingredient) => {
+        return <Ingredient key={ingredient.count} id={ingredient.count} />;
       })}
       <Button
         btnType="newIngredientButton"
@@ -76,7 +76,7 @@ const NewRecipe = (props) => {
       >
         ADD NEW INGREDIENT
       </Button>
-      <input type="file" onChange={uploadImg} />
+      <input className={styles.file} type="file" onChange={uploadImg} />
       <Button
         btnType="sendDataButton"
         disabled={!newRecipe.uploadable}
