@@ -1,29 +1,41 @@
-import React, { useState } from "react";
-import Ingredient from "./Ingredient/Ingredient";
-import styles from "./NewRecipe.module.css";
-import { connect } from "react-redux";
-import Button from "../UI/Button/Button";
-import axios from "../../axios";
+import React, { useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { app } from "../../firebase/config";
+import { useHistory } from "react-router-dom";
+import axios from "../../axios";
+import { addIngredient } from "../../store/reducers/newRecipeReducer";
+
+import styles from "./NewRecipe.module.css";
+
+import Ingredient from "./Ingredient/Ingredient";
+import Button from "../UI/Button/Button";
+
 const NewRecipe = (props) => {
+  const ingredients = useSelector((state) => state.ingredients);
+  const dispatch = useDispatch();
+
   const [newRecipe, setNewRecipe] = useState({
-    title: "",
-    shortDescription: "",
     difficulty: 1,
     fileUrl: "",
     uploadable: false,
   });
 
+  const history = useHistory();
+
+  const titleRef = useRef();
+  const descriptionRef = useRef();
+
   const sendData = () => {
     const data = {
-      title: newRecipe.title,
-      shortDescription: newRecipe.shortDescription,
+      title: titleRef.current.value,
+      shortDescription: descriptionRef.current.value,
       difficulty: newRecipe.difficulty,
       fileUrl: newRecipe.fileUrl,
     };
 
     axios.post("/newRecipe.json", data);
-    console.log("postuje");
+    console.log("posted");
+    history.push("/");
   };
 
   const uploadImg = async (event) => {
@@ -38,43 +50,33 @@ const NewRecipe = (props) => {
       uploadable: true,
     });
   };
+  console.log(ingredients);
   return (
-    <div className={styles.form}>
-      <form>
-        <div className={styles.title}>
-          <h1>ADD NEW</h1>
-        </div>
-        <input
-          onChange={(event) =>
-            setNewRecipe({ ...newRecipe, title: event.target.value })
-          }
-          placeholder="Title"
-          className={styles.input}
-          type="text"
-        />
-        <input
-          onChange={(event) =>
-            setNewRecipe({ ...newRecipe, shortDescription: event.target.value })
-          }
-          placeholder="Description"
-          className={styles.input}
-          type="text"
-          name="description"
-        />
+    <form className={styles.form}>
+      <header className={styles.title}>ADD NEW RECIPE</header>
+      <input
+        ref={titleRef}
+        placeholder="Title"
+        className={styles.input}
+        type="text"
+      />
+      <input
+        ref={descriptionRef}
+        placeholder="Description"
+        className={styles.input}
+        type="text"
+      />
 
-        {props.ingredients.map((p) => {
-          return <Ingredient key={p.count} id={p.count} />;
-        })}
-
-        <Button
-          btnType="newIngredientButton"
-          click={() => props.addIngredient()}
-        >
-          ADD NEW INGREDIENT
-        </Button>
-      </form>
+      {ingredients.map((p) => {
+        return <Ingredient key={p.count} id={p.count} />;
+      })}
+      <Button
+        btnType="newIngredientButton"
+        click={() => dispatch(addIngredient())}
+      >
+        ADD NEW INGREDIENT
+      </Button>
       <input type="file" onChange={uploadImg} />
-
       <Button
         btnType="sendDataButton"
         disabled={!newRecipe.uploadable}
@@ -82,23 +84,8 @@ const NewRecipe = (props) => {
       >
         SEND DATA
       </Button>
-    </div>
+    </form>
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    ingredients: state.ingredients,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addIngredient: () =>
-      dispatch({
-        type: "addIngredient",
-      }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewRecipe);
+export default NewRecipe;

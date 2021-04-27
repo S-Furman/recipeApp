@@ -1,3 +1,5 @@
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   ingredients: [
     {
@@ -7,59 +9,42 @@ const initialState = {
   ],
 };
 
-const newRecipeReducer = (state = initialState, action) => {
-  if (action.type === "updateIngredient") {
-    const ingredientsCopy = [...state.ingredients];
-    let indexOfElement;
-    for (let i in state.ingredients) {
-      if (state.ingredients[i].count === action.index) {
-        indexOfElement = i;
+const newRecipeSlice = createSlice({
+  name: "newRecipe",
+  initialState,
+  reducers: {
+    updateIngredient: (state, action) => {
+      const index = state.ingredients.findIndex(
+        (element) => element.count === action.payload.id
+      );
+      state.ingredients[index].nameOfIngredient = action.payload.event;
+    },
+    deleteIngredient: (state, action) => {
+      const index = state.ingredients.findIndex(
+        (element) => element.count === action.payload
+      );
+      state.ingredients.splice(index, 1);
+    },
+    addIngredient: (state) => {
+      if (state.ingredients[0]) {
+        state.ingredients.push({
+          count: state.ingredients[state.ingredients.length - 1].count + 1,
+          nameOfIngredient: "",
+        });
+      } else {
+        state.ingredients.push({
+          count: 0,
+          nameOfIngredient: "",
+        });
       }
-    }
-    if (action.value !== undefined) {
-      ingredientsCopy[indexOfElement].nameOfIngredient = action.value;
-    }
+    },
+  },
+});
 
-    return {
-      ...state,
-      ingredients: ingredientsCopy,
-    };
-  }
-  if (action.type === "deleteIngredient") {
-    const ingredientsCopy = [...state.ingredients];
-    let indexOfElement;
-    for (let i in state.ingredients) {
-      if (state.ingredients[i].count === action.index) {
-        indexOfElement = i;
-      }
-    }
-    ingredientsCopy.splice(indexOfElement, 1);
-    return {
-      ...state,
-      ingredients: ingredientsCopy,
-    };
-  }
-
-  if (action.type === "addIngredient") {
-    const ingredientsCopy = [...state.ingredients];
-    if (state.ingredients[0]) {
-      ingredientsCopy.push({
-        count: state.ingredients[state.ingredients.length - 1].count + 1,
-        nameOfIngredient: "",
-      });
-    } else {
-      ingredientsCopy.push({
-        count: 0,
-        nameOfIngredient: "",
-      });
-    }
-
-    return {
-      ...state,
-      ingredients: ingredientsCopy,
-    };
-  }
-  return state;
-};
-
-export default newRecipeReducer;
+const store = configureStore({ reducer: newRecipeSlice.reducer });
+export const {
+  addIngredient,
+  deleteIngredient,
+  updateIngredient,
+} = newRecipeSlice.actions;
+export default store;
