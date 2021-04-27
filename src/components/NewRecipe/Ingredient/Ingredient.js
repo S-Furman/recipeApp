@@ -1,8 +1,12 @@
-import React from "react";
-import { connect } from "react-redux";
 import Button from "../../UI/Button/Button";
 import styles from "./Ingredient.module.css";
+import { useDispatch } from "react-redux";
+import {
+  deleteIngredient,
+  updateIngredient,
+} from "../../../store/reducers/newRecipeReducer";
 const Ingredient = (props) => {
+  const dispatch = useDispatch();
   return (
     <div className={styles.ingredient}>
       <input
@@ -10,12 +14,17 @@ const Ingredient = (props) => {
         placeholder="Ingriedent"
         type="text"
         onChange={(event) =>
-          props.updateIngredient(event.target.value, props.id)
+          dispatch(
+            updateIngredient({
+              event: event.target.value,
+              id: props.id,
+            })
+          )
         }
       />
       <Button
         btnType="deleteButton"
-        click={() => props.deleteIngredient(props.id)}
+        click={() => dispatch(deleteIngredient(props.id))}
       >
         -
       </Button>
@@ -25,26 +34,4 @@ const Ingredient = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    ingredients: state.ingredients,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateIngredient: (value, index) =>
-      dispatch({
-        type: "updateIngredient",
-        value: value,
-        index: index,
-      }),
-    deleteIngredient: (index) =>
-      dispatch({
-        type: "deleteIngredient",
-        index: index,
-      }),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Ingredient);
+export default Ingredient;
