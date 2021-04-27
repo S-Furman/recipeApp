@@ -1,4 +1,3 @@
-import React from "react";
 import "./NavbarElement.css";
 import { NavLink } from "react-router-dom";
 const NavbarElement = (props) => {

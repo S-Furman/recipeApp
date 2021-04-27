@@ -1,7 +1,11 @@
 import React from "react";
+import ReactDOM from "react-dom";
+
 import styles from "./SideDrawer.module.css";
+
 import NavItems from "../Navbar/NavItems/NavItems";
-import Backdrop from "../Backdrop/Backdrop";
+import Backdrop from "../../UI/Backdrop/Backdrop";
+
 const SideDrawer = (props) => {
   let style = "closed";
   if (props.opened) {
@@ -9,13 +13,13 @@ const SideDrawer = (props) => {
   }
   return (
     <React.Fragment>
-      <Backdrop click={props.click} opened={props.opened} />
-      <div className={[styles.sideDrawer, styles[style]].join(" ")}>
-        <ul className={styles.ul}>
-          <NavItems></NavItems>
-        </ul>
-        {props.children}
-      </div>
+      {ReactDOM.createPortal(
+        <Backdrop click={props.click} opened={props.opened} />,
+        document.getElementById("backdrop")
+      )}
+      <nav className={[styles.sideDrawer, styles[style]].join(" ")}>
+        <NavItems></NavItems>
+      </nav>
     </React.Fragment>
   );
 };

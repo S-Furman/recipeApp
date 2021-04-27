@@ -1,14 +1,17 @@
-import Button from "../../UI/Button/Button";
 import styles from "./Ingredient.module.css";
+
 import { useDispatch } from "react-redux";
 import {
   deleteIngredient,
   updateIngredient,
 } from "../../../store/reducers/newRecipeReducer";
+
+import Button from "../../UI/Button/Button";
+
 const Ingredient = (props) => {
   const dispatch = useDispatch();
   return (
-    <div className={styles.ingredient}>
+    <>
       <input
         className={styles.input}
         placeholder="Ingriedent"
@@ -30,7 +33,7 @@ const Ingredient = (props) => {
       </Button>
       {/* <label>Ammount:</label>
       <input type="number" name="ammount" /> */}
-    </div>
+    </>
   );
 };
 

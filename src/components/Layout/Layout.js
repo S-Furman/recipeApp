@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "./Navbar/Navbar";
 import SideDrawer from "./SideDrawer/SideDrawer";
 const Layout = (props) => {
@@ -8,11 +8,11 @@ const Layout = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Navbar sideDrawerButtonHandler={sideDrawerButtonHandler} />
       <SideDrawer click={sideDrawerButtonHandler} opened={sideDrawer} />
       <main>{props.children}</main>
-    </React.Fragment>
+    </>
   );
 };
 

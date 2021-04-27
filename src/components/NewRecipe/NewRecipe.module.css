@@ -11,7 +11,6 @@
 .title {
   padding: 10px;
   margin-bottom: 10px;
-  text-align: center;
   font-size: 1.5em;
 }
 
@@ -29,6 +28,28 @@
 .input:focus {
   outline: none;
   border: 1px solid #255;
+}
+
+.file::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.file::before {
+  content: "Wybierz plik";
+  display: inline-block;
+  background: #cebc81;
+  color: white;
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1.25em;
+}
+
+.file {
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
 }
 
 @media (max-width: 800px) {

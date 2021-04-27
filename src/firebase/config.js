@@ -31,7 +31,6 @@ export const signInWithGoogle = () => {
 };
 
 export const signInWithEmail = (email, password) => {
-  console.log("siema");
   firebase.auth().signInWithEmailAndPassword(email, password);
 };
 

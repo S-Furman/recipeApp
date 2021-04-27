@@ -32,7 +32,13 @@
 .sendDataButton {
   margin: auto;
   display: block;
-  border-radius: 25px;
+  border-radius: 15px;
+}
+
+.signIn {
+  border-radius: 15px;
+  margin: 20px;
+  font-size: 1em;
 }
 
 .disabled {
