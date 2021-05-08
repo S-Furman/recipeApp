@@ -29,11 +29,3 @@ export const signInWithGoogle = () => {
       console.log(error);
     });
 };
-
-export const signInWithEmail = (email, password) => {
-  firebase.auth().signInWithEmailAndPassword(email, password);
-};
-
-export const signUp = (email, password) => {
-  firebase.auth().createUserWithEmailAndPassword(email, password);
-};

@@ -3,8 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Recipes from "./components/Recipes/Recipes";
 import NewRecipe from "./components/NewRecipe/NewRecipe";
-import SignIn from "./components/Auth/SignIn/SignIn";
-import { signInWithEmail, signUp } from "./firebase/config";
+import Login from "./components/Auth/Login/Login";
 
 import "./App.css";
 
@@ -16,16 +15,14 @@ function App() {
         <Route
           path="/signIn"
           exact
-          render={() => (
-            <SignIn formType="Sign In" signingFunction={signInWithEmail} />
-          )}
+          render={() => <Login formType="Sign In" />}
         ></Route>
         <Route
           path="/signUp"
           exact
-          render={() => <SignIn formType="Sign Up" signingFunction={signUp} />}
+          render={() => <Login formType="Sign Up" />}
         ></Route>
-        <Route path="/" component={Recipes}></Route>
+        <Route path="*" component={Recipes}></Route>
       </Switch>
     </Layout>
   );
